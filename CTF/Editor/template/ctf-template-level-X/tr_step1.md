@@ -42,7 +42,7 @@ Bu senaryoda, Alpine imajında çalışan bir MSSQL veritabanı oluşturacak ve 
 ### Talimatlar
 
 1. Servislerimizin çalıştığını `docker version` ile kontrol edelim.
-2. Docker imajımızı `docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=password1" -p 1433:1433 -d mcr.microsoft.com/mssql/server:2022-latest` ile ayağa kaldıralım.
+2. Docker imajımızı `docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=password1" -p 5432:5432 -d mcr.microsoft.com/mssql/server:2022-latest` ile ayağa kaldıralım.
 3. Docker containerımın `docker container ls` komutu ile ayağa kalktığını görebiliriz.
 1. Ana dizinde `/home` bir dizinine gidin.
 2. Postgresql veritabanını docker imajı ile ayağa kaldırabilmek için `docker run --name mypostgresdb -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 -d postgres` komutunu çalıştıralım. 
