@@ -1,32 +1,55 @@
 
-# Template Seviye 0
-
+## Problem - DDL ve DML Komutları
+Bu senaryo içerisinde sizlere tahsis edilen makinelerde belirtilen dosya dizinine ulaşmanızı ve klasörlerin içerisine aşağıdaki talimatlar gereğince backup işlemlerini uyguladığınız bir senaryo hazırlamanız istenmektedir.
 ---
 
-## Seviye Hedefi
+### Bilgi 
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+SQL DML (Data Manipulation Language) Veri İşleme Dili:
+Veritabanında bilgi üzerinde çalışmayı sağlar. Bilgiyi çağırma, bilgiye yeni bir şeyler ekleme, bilgiden bir şeyler silme, bilgiyi güncelleştirme işlemlerini yapar.
 
-**Örneğin yazdığınız CTF senaryosunda sunucu bağlantısı gerekiyor, şablon seviyesi 0 bu bağlantıyı anlattığınız kısım olabilir. Bu seviye ile ilgili resim ve detaylı açıklamaları bu alanda kullanabilirsiniz.**
+Temel dört komutu vardır:
 
-### Bu seviyeyi çözmek için ihtiyaç duyabileceğiniz komutlar
+·SELECT : Veritabanındaki istenilen alanı çağırmayı ve gereken bilgiyi görebilmeyi sağlar.
 
-``` {.sh}
-    ssh
-```
+· UPDATE : Veritabanındaki kayıtlar üzerinde bilgi güncellemeyi sağlar.
 
-**Bu seviyenin çözümünde yardımcı olacak bazı komutları bu alanda gösterebilirsiniz.**
+· INSERT : Veritabanına alan eklemeyi sağlar.
 
----
+· DELETE : Veritabanından alan silmeyi sağlar.
 
-### Yararlı Okuma Materyali
+SQL DDL (Data Definition Language) Veri Tanımlama Dili:
+Verilerin tutulduğu nesneler olan tabloların yaratılmasını, silinmesini ve bazı temel özelliklerinin düzenlenmesini sağlar.
 
-``` {.sh}
-    - Wikipedia'da Güvenli Kabuk (SSH)
-    - wikiHow'da SSH nasıl kullanılır?
-```
+En yaygın kullanılan komutları şunlardır:
 
-**Bu alanda bu seviyeyi çözmenize yardımcı olacak yardımcı okuma materyallerini gösterebilirsiniz.**
+.CREATE TABLE : Veritabanı üzerinde bir tablo yaratmak için kullanılır.
 
-[**Bu görüntü dosyanın en üstünde olabilir ancak bu alanın kullanımı isteğe bağlıdır**]
-![Template Level X adım1](https://cdn.bulutbilisimciler.com/public/images/[course-name]/TemplateX-1.png)
+.ALTER TABLE : Var olan nesnede değişiklik yapmak, yeni bir sütun eklemek, sütunun tipini veya uzunluğunu değiştirmek gibi yapısal değişiklikler için kullanılır.
+
+.DROP TABLE : Tabloyu verilerle birlikte kalıcı olarak siler.
+
+.TRUNCATE TABLE : Tablodaki veri içeriklerini siler fakat tablo yapısı kalır.
+
+.CREATE INDEX : Index oluşturmak için, tablonun sütun adı üzerinde indeks oluşturur.
+
+.CREATE VIEW : Görüntü oluşturmak için kullanılır.
+
+.DROP VIEW : Görüntüyü siler.
+
+Bu senaryoda, Alpine imajında çalışan bir MSSQL veritabanı oluşturacak ve ardından bir tablo oluşturup tablo içerisine kayıtlar atıp daha sonra bu koyutları sorgu ile çekeceğiz.
+
+### Talimatlar
+
+1. Servislerimizin çalıştığını `docker version` ile kontrol edelim.
+2. Docker imajımızı `docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=password1" -p 1433:1433 -d mcr.microsoft.com/mssql/server:2022-latest` ile ayağa kaldıralım.
+3. Docker containerımın `docker container ls` komutu ile ayağa kalktığını görebiliriz.
+1. Ana dizinde `/home` bir dizinine gidin.
+2. Postgresql veritabanını docker imajı ile ayağa kaldırabilmek için `docker run --name mypostgresdb -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 -d postgres` komutunu çalıştıralım. 
+3. Docker imajının çalıştığından emin olduktan sonra `docker exec -it mypostgresdb bash` komutunu çalıştırıp postgresql veritabanına erişelim. 
+4. `psql -U postgres` komutunu çalıştırarak bağlantı gerçekleşir ve burada psql komutlarını çalıştırabilirsiniz. 
+5. Postgresql veritabanına bağlandıktan sonra aşağıdaki komutları çalıştırarak tablo oluşturup terminal üzerinden bir yedek alacağız.
+6. `mydatabase` adında yeni bir veritabanı oluşturun sonrasında `\c mydatabase` diyerek veritabanınıza bağlanın. 
+7. Bağlantı yapıldıktan sonra yeni bir tablo oluşturunuz ve bu tabloyu da oluşturulan SQL dosyasını kullanarak tabloyu oluşturmak için `psql -U postgres -f create_table.sql` komutunu çalıştırınız ve psql içinden `\q` komutu ile çıkınız. 
+8. Tablo başarıyla oluşturulduktan sonra, `pg_dump` komutunu da kullanarak bir yedek alma işlemi gerçekleştirebilirsiniz. 
+9. İşlemleri tamamladıktan sonra "Kontrol Et" butonuna basınız ve senaryoyu tamamlayınız.
