@@ -1,6 +1,6 @@
 
 ## Problem - DDL ve DML Komutları
-Bu senaryo içerisinde sizlere tahsis edilen makinelerde belirtilen dosya dizinine ulaşmanızı ve klasörlerin içerisine aşağıdaki talimatlar gereğince backup işlemlerini uyguladığınız bir senaryo hazırlamanız istenmektedir.
+Bu senaryo içerisinde sizlere tahsis edilen makinelerde SQL Server 2019 imajını kurmanız ve burada DDL ve DML komutları ile bazı basit işlemleri uyguladığınız bir senaryo hazırlamanız istenmektedir.
 ---
 
 ### Bilgi 
