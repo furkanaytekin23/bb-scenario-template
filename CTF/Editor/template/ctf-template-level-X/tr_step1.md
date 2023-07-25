@@ -42,14 +42,13 @@ Bu senaryoda, Alpine imajında çalışan bir MSSQL veritabanı oluşturacak ve 
 ### Talimatlar
 
 1. Servislerimizin çalıştığını `docker version` ile kontrol edelim.
-2. Docker imajımızı `docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=password1" -p 5432:5432 -d mcr.microsoft.com/mssql/server:2022-latest` ile ayağa kaldıralım.
-3. Docker containerımın `docker container ls` komutu ile ayağa kalktığını görebiliriz.
-1. Ana dizinde `/home` bir dizinine gidin.
-2. Postgresql veritabanını docker imajı ile ayağa kaldırabilmek için `docker run --name mypostgresdb -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 -d postgres` komutunu çalıştıralım. 
-3. Docker imajının çalıştığından emin olduktan sonra `docker exec -it mypostgresdb bash` komutunu çalıştırıp postgresql veritabanına erişelim. 
-4. `psql -U postgres` komutunu çalıştırarak bağlantı gerçekleşir ve burada psql komutlarını çalıştırabilirsiniz. 
-5. Postgresql veritabanına bağlandıktan sonra aşağıdaki komutları çalıştırarak tablo oluşturup terminal üzerinden bir yedek alacağız.
-6. `mydatabase` adında yeni bir veritabanı oluşturun sonrasında `\c mydatabase` diyerek veritabanınıza bağlanın. 
-7. Bağlantı yapıldıktan sonra yeni bir tablo oluşturunuz ve bu tabloyu da oluşturulan SQL dosyasını kullanarak tabloyu oluşturmak için `psql -U postgres -f create_table.sql` komutunu çalıştırınız ve psql içinden `\q` komutu ile çıkınız. 
-8. Tablo başarıyla oluşturulduktan sonra, `pg_dump` komutunu da kullanarak bir yedek alma işlemi gerçekleştirebilirsiniz. 
+2. Docker Pull komutu `docker pull mcr.microsoft.com/mssql/server:2019-latest` ile Docker Hub'tan SQL Server 2019 imajı parça parça indirelim.
+3. Docker imajımızı `sudo docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=FurkanAytekin" -p 1433:1433 --name sqlserver2019 -d mcr.microsoft.com/mssql/server:2019-latest` ile ayağa kaldıralım.
+4. Docker containerımın `sudo docker ps -a` komutu ile ayağa kalktığını görebiliriz.
+5. Docker imajının çalıştığından emin olduktan sonra `sudo docker exec -it sqlserver2019 "bash"` komutunu çalıştırıp SQL Server 2019 veritabanına erişelim. 
+6. `/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "FurkanAytekin"` komutunu çalıştırarak bağlantı gerçekleşir ve burada sql komutlarını çalıştırabilirsiniz. 
+7. SQL Server 2019 veritabanına bağlandıktan sonra aşağıdaki komutları çalıştırarak en basit SQL sorgularından birisi, hangi SQL Server sürümü ile çalıştığımızı anlamak için kullandığımız @@version system parametresini görüntülemek olacaktır.
+"GO" komutu ile o ana dek yazılan SQL sorgusu çalıştırılır.
+8. `SELECT @@version
+go` komutu ile basit bir sorgu kullanalım. 
 9. İşlemleri tamamladıktan sonra "Kontrol Et" butonuna basınız ve senaryoyu tamamlayınız.
