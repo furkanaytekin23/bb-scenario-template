@@ -43,10 +43,10 @@ Bu senaryoda, Alpine imajında çalışan bir MSSQL veritabanı oluşturacak ve 
 
 1. Servislerimizin çalıştığını `docker version` ile kontrol edelim.
 2. Docker Pull komutu `docker pull mcr.microsoft.com/mssql/server:2019-latest` ile Docker Hub'tan SQL Server 2019 imajı parça parça indirelim.
-3. Docker imajımızı `sudo docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=FurkanAytekin" -p 1433:1433 --name sqlserver2019 -d mcr.microsoft.com/mssql/server:2019-latest` ile ayağa kaldıralım.
+3. Docker imajımızı `sudo docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=FurkanAytekin@6" -p 1433:1433 --name sqlserver2019 -d mcr.microsoft.com/mssql/server:2019-latest` ile ayağa kaldıralım.
 4. Docker containerımın `sudo docker ps -a` komutu ile ayağa kalktığını görebiliriz.
 5. Docker imajının çalıştığından emin olduktan sonra `sudo docker exec -it sqlserver2019 "bash"` komutunu çalıştırıp SQL Server 2019 veritabanına erişelim. 
-6. `/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "FurkanAytekin"` komutunu çalıştırarak bağlantı gerçekleşir ve burada sql komutlarını çalıştırabilirsiniz. 
+6. `/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "FurkanAytekin@6"` komutunu çalıştırarak bağlantı gerçekleşir ve burada sql komutlarını çalıştırabilirsiniz. 
 7. SQL Server 2019 veritabanına bağlandıktan sonra aşağıdaki komutları çalıştırarak en basit SQL sorgularından birisi, hangi SQL Server sürümü ile çalıştığımızı anlamak için kullandığımız @@version system parametresini görüntülemek olacaktır.
 "GO" komutu ile o ana dek yazılan SQL sorgusu çalıştırılır.
 8. `SELECT @@version
