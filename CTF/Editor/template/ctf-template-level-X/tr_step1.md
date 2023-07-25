@@ -55,3 +55,11 @@ Bu senaryoda, Alpine imajında çalışan bir MSSQL veritabanı oluşturacak ve 
 11. Oluşturmuş olduğun calisanlar tablosuna id si 23 olan ve çalışan adı "Furkan Aytekin" olan bir çalışan ekleyin `insert into calisanlar values(23,'Furkan Aytekin')`
 12. Oluşturmuş olduğun kaydı çekip, görüntüleyin. `Select * From calisanlar`
 13. İşlemleri tamamladıktan sonra "Kontrol Et" butonuna basınız ve senaryoyu tamamlayınız.
+
+### Başarılı Çıktı
+ Koşul:  
+``` echo
+id     calisan_adi                                       
+------ --------------------------------------------------
+    23 Furkan Aytekin 
+```      
