@@ -37,7 +37,7 @@ En yaygın kullanılan komutları şunlardır:
 
 .DROP VIEW : Görüntüyü siler.
 
-Bu senaryoda, Alpine imajında çalışan bir MSSQL veritabanı oluşturacak ve ardından bir tablo oluşturup tablo içerisine kayıtlar atıp daha sonra bu koyutları sorgu ile çekeceğiz.
+Bu senaryoda, Alpine imajında çalışan bir MSSQL veritabanı oluşturacak ve ardından bir tablo oluşturup tablo içerisine kayıtlar atıp daha sonra bu kayıtları sorgu ile çekeceğiz.
 
 ### Talimatlar
 
