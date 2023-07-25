@@ -49,6 +49,9 @@ Bu senaryoda, Alpine imajında çalışan bir MSSQL veritabanı oluşturacak ve 
 6. `/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "FurkanAytekin@6"` komutunu çalıştırarak bağlantı gerçekleşir ve burada sql komutlarını çalıştırabilirsiniz. 
 7. SQL Server 2019 veritabanına bağlandıktan sonra aşağıdaki komutları çalıştırarak en basit SQL sorgularından birisi, hangi SQL Server sürümü ile çalıştığımızı anlamak için kullandığımız @@version system parametresini görüntülemek olacaktır.
 "GO" komutu ile o ana dek yazılan SQL sorgusu çalıştırılır.
-8. `SELECT @@version
-go` komutu ile basit bir sorgu kullanalım. 
-9. İşlemleri tamamladıktan sonra "Kontrol Et" butonuna basınız ve senaryoyu tamamlayınız.
+8. `SELECT @@version` `go` komutu ile basit bir sorgu kullanalım.
+9. "TurkTelekom" adında bir database oluşturun.
+10. Bu database içerisine "calisanlar" adında bir tablo oluşturun. `Create table calisanlar(id smallint primary key , calisan_adi varchar(50))`
+11. Oluşturmuş olduğun calisanlar tablosuna id si 23 olan ve çalışan adı "Furkan Aytekin" olan bir çalışan ekleyin `insert into calisanlar values(23,'Furkan Aytekin');`
+12. Oluşturmuş olduğun kaydı çekip, görüntüleyin. `Select * From calisanlar`
+13. İşlemleri tamamladıktan sonra "Kontrol Et" butonuna basınız ve senaryoyu tamamlayınız.
